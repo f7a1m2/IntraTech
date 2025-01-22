@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">Create offres</span></h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form class="form" th:action="@{/offress}" method="post">
+                <div class="log-lg-3 col-md-6 order-0">
+                    <div class="mb-3">
+  <label for="nombrepositionsSelect" class="form-label">Postes</label>
+  <select class="form-select" id="nombrepositionsSelect" name="nombrepositions">
+    <option th:each="nombrepositions:${nombrepositionss}" th:value="${nombrepositions.nombre_positions}" th:text="${nombrepositions.postes}"></option>
+  </select>
+  <div id="nombrepositionshelp" class="form-text">Select an option.</div>
+</div>
+
+                    <div class="mb-3">
+    <label for="titreinput" class="form-label">Titre</label>
+    <input type="text" class="form-control" id="titreinput"
+      aria-describedby="titrehelp" name="titre">
+</div>
+
+                    <div class="mb-3">
+    <label for="descriptioninput" class="form-label">Description</label>
+    <input type="text" class="form-control" id="descriptioninput"
+      aria-describedby="descriptionhelp" name="description">
+</div>
+
+                    <div class="mb-3">
+  <label for="datepublicationinput" class="form-label">DatePublication</label>
+  <input type="date" class="form-control" id="datepublicationinput"
+    aria-describedby="datepublicationhelp" name="datepublication">
+</div>
+
+                    <div class="mb-3">
+  <label for="dateexpirationinput" class="form-label">DateExpiration</label>
+  <input type="date" class="form-control" id="dateexpirationinput"
+    aria-describedby="dateexpirationhelp" name="dateexpiration">
+</div>
+
+                    <div class="mb-3">
+    <label for="nombrepositionsinput" class="form-label">NombrePositions</label>
+    <input type="number" step="1.0" class="form-control" id="nombrepositionsinput"
+      aria-describedby="nombrepositionshelp" name="nombrepositions">
+</div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

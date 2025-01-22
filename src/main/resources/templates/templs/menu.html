@@ -1,0 +1,202 @@
+<!-- Menu -->
+<aside th:fragment="layout-menu"
+ id="layout-menu" 
+	class="layout-menu menu-vertical menu bg-menu-theme">
+	<div class="app-brand demo">
+		<a href="/" class="app-brand-link">
+			<span class="app-brand-logo demo">
+				<img th:src="@{/assets/img/favicon/logo-projet-universel.jpg}"
+ 
+					alt="Logo" style="width: 45px; height: auto;">
+			</span>
+			<span class="app-brand-text menu-text fw-bolder ms-2">IntraTech </span>
+		</a>
+
+		<a href="javascript:void(0);"
+		  class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+			<i class="bx bx-chevron-left bx-sm align-middle"></i>
+		</a>
+	</div>
+
+	<div class="menu-inner-shadow"></div>
+
+	<div class="menu">
+		<ul class="menu-inner py-1">
+			<!-- List Menu -->
+			<li class="menu-header small text-uppercase">
+				<span class="menu-header-text">CRUD</span>
+			</li>
+
+			<li class="menu-item">
+				<a href="javascript:void(0);" class="menu-link menu-toggle">
+					<i class="menu-icon tf-icons bx bx-list-plus"></i>
+					<div data-i18n="List">List</div>
+				</a>
+
+				<ul class="menu-sub">
+				<li class="menu-item">
+						<a th:href="@{/associationquestionevaluations}" class="menu-link">
+							<div data-i18n="list-associationQuestionEvaluation">List associationquestionevaluation</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/candidatss}" class="menu-link">
+							<div data-i18n="list-candidats">List candidats</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/candidaturess}" class="menu-link">
+							<div data-i18n="list-candidatures">List candidatures</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/categoriepostess}" class="menu-link">
+							<div data-i18n="list-categoriePostes">List categoriepostes</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/competencess}" class="menu-link">
+							<div data-i18n="list-competences">List competences</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/cvs}" class="menu-link">
+							<div data-i18n="list-cv">List cv</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/cvcompetencess}" class="menu-link">
+							<div data-i18n="list-cvCompetences">List cvcompetences</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/educations}" class="menu-link">
+							<div data-i18n="list-education">List education</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/employess}" class="menu-link">
+							<div data-i18n="list-employes">List employes</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/evaluationss}" class="menu-link">
+							<div data-i18n="list-evaluations">List evaluations</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/experiencess}" class="menu-link">
+							<div data-i18n="list-experiences">List experiences</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/financialindicatorss}" class="menu-link">
+							<div data-i18n="list-financialIndicators">List financialindicators</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/historiqueperformanceemployes}" class="menu-link">
+							<div data-i18n="list-historiquePerformanceEmploye">List historiqueperformanceemploye</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/importancecompetences}" class="menu-link">
+							<div data-i18n="list-importanceCompetence">List importancecompetence</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/importanceeducations}" class="menu-link">
+							<div data-i18n="list-importanceEducation">List importanceeducation</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/importanceexperiences}" class="menu-link">
+							<div data-i18n="list-importanceExperience">List importanceexperience</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/invoicestatuss}" class="menu-link">
+							<div data-i18n="list-invoiceStatus">List invoicestatus</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/invoicess}" class="menu-link">
+							<div data-i18n="list-invoices">List invoices</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/offress}" class="menu-link">
+							<div data-i18n="list-offres">List offres</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/postess}" class="menu-link">
+							<div data-i18n="list-postes">List postes</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/productstockss}" class="menu-link">
+							<div data-i18n="list-productStocks">List productstocks</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/questionsevaluations}" class="menu-link">
+							<div data-i18n="list-questionsEvaluation">List questionsevaluation</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/reponsesevaluations}" class="menu-link">
+							<div data-i18n="list-reponsesEvaluation">List reponsesevaluation</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/reponsespossibless}" class="menu-link">
+							<div data-i18n="list-reponsesPossibles">List reponsespossibles</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/saasproductss}" class="menu-link">
+							<div data-i18n="list-saasProducts">List saasproducts</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/subscriptionss}" class="menu-link">
+							<div data-i18n="list-subscriptions">List subscriptions</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/subscriptionsstatuss}" class="menu-link">
+							<div data-i18n="list-subscriptionsStatus">List subscriptionsstatus</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/supportticketss}" class="menu-link">
+							<div data-i18n="list-supportTickets">List supporttickets</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/supportticketsstatuss}" class="menu-link">
+							<div data-i18n="list-supportTicketsStatus">List supportticketsstatus</div>
+						</a>
+					</li>
+				<li class="menu-item">
+						<a th:href="@{/userss}" class="menu-link">
+							<div data-i18n="list-users">List users</div>
+						</a>
+					</li>
+				
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+<!-- 
+	<div class="container">
+		<div class="menu-item">
+			<a th:href="@{/logout}" class="menu-link">
+				<i class="bx bx-log-out"></i>Log out
+			</a>
+		</div>
+	</div> -->
+
+</aside>

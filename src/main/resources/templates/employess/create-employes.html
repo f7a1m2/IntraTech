@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">Create employes</span></h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form class="form" th:action="@{/employess}" method="post">
+                <div class="log-lg-3 col-md-6 order-0">
+                    <div class="mb-3">
+  <label for="usersSelect" class="form-label">Candidats</label>
+  <select class="form-select" id="usersSelect" name="users">
+    <option th:each="users:${userss}" th:value="${users.user_id}" th:text="${users.candidats}"></option>
+  </select>
+  <div id="usershelp" class="form-text">Select an option.</div>
+</div>
+
+                    <div class="mb-3">
+  <label for="dateembaucheinput" class="form-label">DateEmbauche</label>
+  <input type="date" class="form-control" id="dateembaucheinput"
+    aria-describedby="dateembauchehelp" name="dateembauche">
+</div>
+
+                    <div class="mb-3">
+  <label for="usersSelect" class="form-label">Candidats</label>
+  <select class="form-select" id="usersSelect" name="users">
+    <option th:each="users:${userss}" th:value="${users.user_id}" th:text="${users.candidats}"></option>
+  </select>
+  <div id="usershelp" class="form-text">Select an option.</div>
+</div>
+
+                    <div class="mb-3">
+    <label for="contrattypeinput" class="form-label">ContratType</label>
+    <input type="text" class="form-control" id="contrattypeinput"
+      aria-describedby="contrattypehelp" name="contrattype">
+</div>
+
+                    <div class="mb-3">
+  <label for="salaireinput" class="form-label">Salaire</label>
+  <input type="number" step="0.001" class="form-control" id="salaireinput"
+    aria-describedby="salairehelp" name="salaire">
+</div>
+
+                    <div class="mb-3">
+  <label for="usersSelect" class="form-label">Candidats</label>
+  <select class="form-select" id="usersSelect" name="users">
+    <option th:each="users:${userss}" th:value="${users.user_id}" th:text="${users.candidats}"></option>
+  </select>
+  <div id="usershelp" class="form-text">Select an option.</div>
+</div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

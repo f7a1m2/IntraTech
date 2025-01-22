@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">Create candidatures</span></h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form class="form" th:action="@{/candidaturess}" method="post">
+                <div class="log-lg-3 col-md-6 order-0">
+                    <div class="mb-3">
+  <label for="statutSelect" class="form-label">Candidats</label>
+  <select class="form-select" id="statutSelect" name="statut">
+    <option th:each="statut:${statuts}" th:value="${statut.statut}" th:text="${statut.candidats}"></option>
+  </select>
+  <div id="statuthelp" class="form-text">Select an option.</div>
+</div>
+
+                    <div class="mb-3">
+  <label for="statutSelect" class="form-label">Candidats</label>
+  <select class="form-select" id="statutSelect" name="statut">
+    <option th:each="statut:${statuts}" th:value="${statut.statut}" th:text="${statut.candidats}"></option>
+  </select>
+  <div id="statuthelp" class="form-text">Select an option.</div>
+</div>
+
+                    <div class="mb-3">
+  <label for="datecandidatureinput" class="form-label">DateCandidature</label>
+  <input type="date" class="form-control" id="datecandidatureinput"
+    aria-describedby="datecandidaturehelp" name="datecandidature">
+</div>
+
+                    <div class="mb-3">
+    <label for="statutinput" class="form-label">Statut</label>
+    <input type="text" class="form-control" id="statutinput"
+      aria-describedby="statuthelp" name="statut">
+</div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

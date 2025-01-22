@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">Create candidats</span></h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form class="form" th:action="@{/candidatss}" method="post">
+                <div class="log-lg-3 col-md-6 order-0">
+                    <div class="mb-3">
+  <label for="statusSelect" class="form-label">Users</label>
+  <select class="form-select" id="statusSelect" name="status">
+    <option th:each="status:${statuss}" th:value="${status.status}" th:text="${status.users}"></option>
+  </select>
+  <div id="statushelp" class="form-text">Select an option.</div>
+</div>
+
+                    <div class="mb-3">
+    <label for="cvdatainput" class="form-label">CvData</label>
+    <input type="text" class="form-control" id="cvdatainput"
+      aria-describedby="cvdatahelp" name="cvdata">
+</div>
+
+                    <div class="mb-3">
+    <label for="statusinput" class="form-label">Status</label>
+    <input type="text" class="form-control" id="statusinput"
+      aria-describedby="statushelp" name="status">
+</div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

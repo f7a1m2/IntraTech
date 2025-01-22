@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">Create financialindicators</span></h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form class="form" th:action="@{/financialindicatorss}" method="post">
+                <div class="log-lg-3 col-md-6 order-0">
+                    <div class="mb-3">
+  <label for="anneeinput" class="form-label">Annee</label>
+  <input type="number" step="0.001" class="form-control" id="anneeinput"
+    aria-describedby="anneehelp" name="annee">
+</div>
+
+                    <div class="mb-3">
+  <label for="totalassetsinput" class="form-label">TotalAssets</label>
+  <input type="number" step="0.001" class="form-control" id="totalassetsinput"
+    aria-describedby="totalassetshelp" name="totalassets">
+</div>
+
+                    <div class="mb-3">
+  <label for="currentassetsinput" class="form-label">CurrentAssets</label>
+  <input type="number" step="0.001" class="form-control" id="currentassetsinput"
+    aria-describedby="currentassetshelp" name="currentassets">
+</div>
+
+                    <div class="mb-3">
+  <label for="fixedassetsinput" class="form-label">FixedAssets</label>
+  <input type="number" step="0.001" class="form-control" id="fixedassetsinput"
+    aria-describedby="fixedassetshelp" name="fixedassets">
+</div>
+
+                    <div class="mb-3">
+  <label for="totalliabilitiesinput" class="form-label">TotalLiabilities</label>
+  <input type="number" step="0.001" class="form-control" id="totalliabilitiesinput"
+    aria-describedby="totalliabilitieshelp" name="totalliabilities">
+</div>
+
+                    <div class="mb-3">
+  <label for="currentliabilitiesinput" class="form-label">CurrentLiabilities</label>
+  <input type="number" step="0.001" class="form-control" id="currentliabilitiesinput"
+    aria-describedby="currentliabilitieshelp" name="currentliabilities">
+</div>
+
+                    <div class="mb-3">
+  <label for="noncurrentliabilitiesinput" class="form-label">NonCurrentLiabilities</label>
+  <input type="number" step="0.001" class="form-control" id="noncurrentliabilitiesinput"
+    aria-describedby="noncurrentliabilitieshelp" name="noncurrentliabilities">
+</div>
+
+                    <div class="mb-3">
+  <label for="equityinput" class="form-label">Equity</label>
+  <input type="number" step="0.001" class="form-control" id="equityinput"
+    aria-describedby="equityhelp" name="equity">
+</div>
+
+                    <div class="mb-3">
+  <label for="revenueinput" class="form-label">Revenue</label>
+  <input type="number" step="0.001" class="form-control" id="revenueinput"
+    aria-describedby="revenuehelp" name="revenue">
+</div>
+
+                    <div class="mb-3">
+  <label for="operatingexpensesinput" class="form-label">OperatingExpenses</label>
+  <input type="number" step="0.001" class="form-control" id="operatingexpensesinput"
+    aria-describedby="operatingexpenseshelp" name="operatingexpenses">
+</div>
+
+                    <div class="mb-3">
+  <label for="netprofitinput" class="form-label">NetProfit</label>
+  <input type="number" step="0.001" class="form-control" id="netprofitinput"
+    aria-describedby="netprofithelp" name="netprofit">
+</div>
+
+                    <div class="mb-3">
+  <label for="roainput" class="form-label">Roa</label>
+  <input type="number" step="0.001" class="form-control" id="roainput"
+    aria-describedby="roahelp" name="roa">
+</div>
+
+                    <div class="mb-3">
+  <label for="roeinput" class="form-label">Roe</label>
+  <input type="number" step="0.001" class="form-control" id="roeinput"
+    aria-describedby="roehelp" name="roe">
+</div>
+
+                    <div class="mb-3">
+  <label for="liquidityratioinput" class="form-label">LiquidityRatio</label>
+  <input type="number" step="0.001" class="form-control" id="liquidityratioinput"
+    aria-describedby="liquidityratiohelp" name="liquidityratio">
+</div>
+
+                    <div class="mb-3">
+  <label for="quickratioinput" class="form-label">QuickRatio</label>
+  <input type="number" step="0.001" class="form-control" id="quickratioinput"
+    aria-describedby="quickratiohelp" name="quickratio">
+</div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

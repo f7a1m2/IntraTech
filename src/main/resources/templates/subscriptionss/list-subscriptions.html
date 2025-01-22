@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">List of subscriptions</span></h2>
+        </div>
+        <div class="col-6 text-end">
+            <a class="btn btn-primary mb-3" th:href="@{/subscriptionss/create-subscriptions}">Create</a>
+        </div>
+    </div>
+
+    <div th:if="${success}" class="alert alert-success alert-dismissible" role="alert" th:text="${success}">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div th:if="${error}" class="alert alert-danger alert-dismissible" role="alert" th:text="${error}">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <!-- TABLE ALSO AT THE TOP OF THE PAGE -->
+    <div class="col-lg-12 col-md-7 order-0">
+        <div class="card shadow border-0">
+            <div class="card-body">
+                <div class="table-responsive text-nowrap">
+                    <table class="table">
+                        <thead class="thead-light">
+                        <tr>
+                            <th>id</th>
+                            <th>users</th>
+                            <th>saasProducts</th>
+                            <th>startDate</th>
+                            <th>endDate</th>
+                            <th>subscriptionsStatus</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="subscriptions : ${ subscriptionss }">
+                            <td class="text-truncate align-middle mt-3"  th:text="${ subscriptions.id }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ subscriptions.users.user_id }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ subscriptions.saasProducts.product_id }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ subscriptions.startDate }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ subscriptions.endDate }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ subscriptions.subscriptionsStatus.subscriptions_status_id }" >  </td>
+                            
+                            <td class="align-middle">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-2 order-0">
+                                        <div class="mt-0">
+                                            <!-- Button trigger modal -->
+                                            <button
+                                                    type="button"
+                                                    class="btn btn-info"
+                                                    data-bs-toggle="modal"
+                                                    th:attr="data-bs-target='#updateModalCenter_' + ${ subscriptions.id }"
+                                            >
+                                                <i class="bx bx-wallet"></i> Update
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" th:id="'updateModalCenter_' + ${ subscriptions.id }"
+                                                 tabindex="-1"
+                                                 aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered modal-lg"
+                                                     role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h3 class="modal-title" th:id="'updateModalCenterTitle_' + ${ subscriptions.id }">
+                                                                Modify this element</h3>
+                                                            <button
+                                                                    type="button"
+                                                                    class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="close"
+                                                            ></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <!-- Select entity modification form -->
+                                                            <form th:action="@{/subscriptionss/{id} (id=${subscriptions.id})}" method="post">
+                                                            <div class="row">
+                                                                <div class="log-lg-3 col-md-6 order-0">
+                                                                    <div class="mb-3">
+  																	<label for="subscriptionsstatusSelect" class="form-label">SubscriptionsStatus</label>
+  																	<select class="form-select" id="subscriptionsstatusSelect" name="subscriptionsstatus">
+  																	  <option th:each="subscriptionsstatus:${subscriptionsstatuss}" th:value="${subscriptionsstatus.subscriptions_status_id}" th:text="${subscriptionsstatus.users}"></option>
+  																	</select>
+  																	<div id="subscriptionsstatushelp" class="form-text">Select an option.</div>
+  																	</div>
+
+                                                                    <div class="mb-3">
+  																	<label for="subscriptionsstatusSelect" class="form-label">SubscriptionsStatus</label>
+  																	<select class="form-select" id="subscriptionsstatusSelect" name="subscriptionsstatus">
+  																	  <option th:each="subscriptionsstatus:${subscriptionsstatuss}" th:value="${subscriptionsstatus.subscriptions_status_id}" th:text="${subscriptionsstatus.users}"></option>
+  																	</select>
+  																	<div id="subscriptionsstatushelp" class="form-text">Select an option.</div>
+  																	</div>
+
+                                                                    <div class="mb-3">
+  																	<label for="startdateinput" class="form-label">StartDate</label>
+  																	<input type="date" class="form-control" id="startdateinput"
+  																	  name="startdate"
+  																	  th:value="${ subscriptions.getStartDate() }">
+  																</div>
+
+                                                                    <div class="mb-3">
+  																	<label for="enddateinput" class="form-label">EndDate</label>
+  																	<input type="date" class="form-control" id="enddateinput"
+  																	  name="enddate"
+  																	  th:value="${ subscriptions.getEndDate() }">
+  																</div>
+
+                                                                    <div class="mb-3">
+  																	<label for="subscriptionsstatusSelect" class="form-label">SubscriptionsStatus</label>
+  																	<select class="form-select" id="subscriptionsstatusSelect" name="subscriptionsstatus">
+  																	  <option th:each="subscriptionsstatus:${subscriptionsstatuss}" th:value="${subscriptionsstatus.subscriptions_status_id}" th:text="${subscriptionsstatus.users}"></option>
+  																	</select>
+  																	<div id="subscriptionsstatushelp" class="form-text">Select an option.</div>
+  																	</div>
+
+                                                                </div>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Confirm
+                                                            </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="align-middle">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-2 order-0">
+                                        <div class="mt-0">
+                                           <!-- Button trigger modal -->
+                                           <button
+                                                   type="button"
+                                                   class="btn btn-danger"
+                                                   data-bs-toggle="modal"
+                                                   th:attr="data-bs-target='#cancelModalCenter_' + ${ subscriptions.id }"
+                                           >
+                                               <i class="bx bx-trash"></i> Delete
+                                           </button>
+
+                                           <!-- Modal -->
+                                           <div class="modal fade" th:id="'cancelModalCenter_' + ${ subscriptions.id }"
+                                                tabindex="-1"
+                                                aria-hidden="true">
+                                               <div class="modal-dialog modal-dialog-centered modal-lg"
+                                                    role="document">
+                                                   <div class="modal-content">
+                                                       <div class="modal-header">
+                                                           <h3 class="modal-title" th:id="'cancelModalCenterTitle_' + ${ subscriptions.id }">
+                                                               Cancellation</h3>
+                                                           <button
+                                                                   type="button"
+                                                                   class="btn-close"
+                                                                   data-bs-dismiss="modal"
+                                                                   aria-label="close"
+                                                           ></button>
+                                                       </div>
+                                                       <div class="modal-body">
+                                                           <!-- Select entity modification form -->
+                                                           <form th:action="@{/subscriptionss/{id}/delete (id=${subscriptions.id})}" method="post">
+                                                           <div class="row">
+                                                               <div class="log-lg-3 col-md-6 order-0">
+                                                                    <p>Do you want to undo the changes made to this element?</p>
+                                                               </div>
+                                                           </div>
+                                                           <button type="submit" class="btn btn-danger">Delete
+                                                           </button>
+                                                           </form>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">Create experiences</span></h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form class="form" th:action="@{/experiencess}" method="post">
+                <div class="log-lg-3 col-md-6 order-0">
+                    <div class="mb-3">
+    <label for="nominput" class="form-label">Nom</label>
+    <input type="text" class="form-control" id="nominput"
+      aria-describedby="nomhelp" name="nom">
+</div>
+
+                    <div class="mb-3">
+    <label for="debutintervalleinput" class="form-label">DebutIntervalle</label>
+    <input type="number" step="1.0" class="form-control" id="debutintervalleinput"
+      aria-describedby="debutintervallehelp" name="debutintervalle">
+</div>
+
+                    <div class="mb-3">
+    <label for="finintervalleinput" class="form-label">FinIntervalle</label>
+    <input type="number" step="1.0" class="form-control" id="finintervalleinput"
+      aria-describedby="finintervallehelp" name="finintervalle">
+</div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

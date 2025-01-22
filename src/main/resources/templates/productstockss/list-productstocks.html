@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">List of productstocks</span></h2>
+        </div>
+        <div class="col-6 text-end">
+            <a class="btn btn-primary mb-3" th:href="@{/productstockss/create-productstocks}">Create</a>
+        </div>
+    </div>
+
+    <div th:if="${success}" class="alert alert-success alert-dismissible" role="alert" th:text="${success}">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div th:if="${error}" class="alert alert-danger alert-dismissible" role="alert" th:text="${error}">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <!-- TABLE ALSO AT THE TOP OF THE PAGE -->
+    <div class="col-lg-12 col-md-7 order-0">
+        <div class="card shadow border-0">
+            <div class="card-body">
+                <div class="table-responsive text-nowrap">
+                    <table class="table">
+                        <thead class="thead-light">
+                        <tr>
+                            <th>stockId</th>
+                            <th>saasProducts</th>
+                            <th>annee</th>
+                            <th>stockQuantity</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="productstocks : ${ productstockss }">
+                            <td class="text-truncate align-middle mt-3"  th:text="${ productstocks.stockId }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ productstocks.saasProducts.product_id }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ productstocks.annee }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ productstocks.stockQuantity }" >  </td>
+                            
+                            <td class="align-middle">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-2 order-0">
+                                        <div class="mt-0">
+                                            <!-- Button trigger modal -->
+                                            <button
+                                                    type="button"
+                                                    class="btn btn-info"
+                                                    data-bs-toggle="modal"
+                                                    th:attr="data-bs-target='#updateModalCenter_' + ${ productstocks.stockid }"
+                                            >
+                                                <i class="bx bx-wallet"></i> Update
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" th:id="'updateModalCenter_' + ${ productstocks.stockid }"
+                                                 tabindex="-1"
+                                                 aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered modal-lg"
+                                                     role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h3 class="modal-title" th:id="'updateModalCenterTitle_' + ${ productstocks.stockid }">
+                                                                Modify this element</h3>
+                                                            <button
+                                                                    type="button"
+                                                                    class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="close"
+                                                            ></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <!-- Select entity modification form -->
+                                                            <form th:action="@{/productstockss/{id} (id=${productstocks.stockid})}" method="post">
+                                                            <div class="row">
+                                                                <div class="log-lg-3 col-md-6 order-0">
+                                                                    <div class="mb-3">
+  																	<label for="stockquantitySelect" class="form-label">StockQuantity</label>
+  																	<select class="form-select" id="stockquantitySelect" name="stockquantity">
+  																	  <option th:each="stockquantity:${stockquantitys}" th:value="${stockquantity.stock_quantity}" th:text="${stockquantity.saasProducts}"></option>
+  																	</select>
+  																	<div id="stockquantityhelp" class="form-text">Select an option.</div>
+  																	</div>
+
+                                                                    <div class="mb-3">
+  																	<label for="anneeinput" class="form-label">Annee</label>
+  																	<input type="number" step="0.001" class="form-control" id="anneeinput"
+  																	  name="annee"
+  																	  th:value="${ productstocks.getAnnee() }">
+  																</div>
+
+                                                                    <div class="mb-3">
+  																	<label for="stockquantityinput" class="form-label">StockQuantity</label>
+  																	<input type="number" step="0.001" class="form-control" id="stockquantityinput"
+  																	  name="stockquantity"
+  																	  th:value="${ productstocks.getStockQuantity() }">
+  																</div>
+
+                                                                </div>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Confirm
+                                                            </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="align-middle">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-2 order-0">
+                                        <div class="mt-0">
+                                           <!-- Button trigger modal -->
+                                           <button
+                                                   type="button"
+                                                   class="btn btn-danger"
+                                                   data-bs-toggle="modal"
+                                                   th:attr="data-bs-target='#cancelModalCenter_' + ${ productstocks.stockid }"
+                                           >
+                                               <i class="bx bx-trash"></i> Delete
+                                           </button>
+
+                                           <!-- Modal -->
+                                           <div class="modal fade" th:id="'cancelModalCenter_' + ${ productstocks.stockid }"
+                                                tabindex="-1"
+                                                aria-hidden="true">
+                                               <div class="modal-dialog modal-dialog-centered modal-lg"
+                                                    role="document">
+                                                   <div class="modal-content">
+                                                       <div class="modal-header">
+                                                           <h3 class="modal-title" th:id="'cancelModalCenterTitle_' + ${ productstocks.stockid }">
+                                                               Cancellation</h3>
+                                                           <button
+                                                                   type="button"
+                                                                   class="btn-close"
+                                                                   data-bs-dismiss="modal"
+                                                                   aria-label="close"
+                                                           ></button>
+                                                       </div>
+                                                       <div class="modal-body">
+                                                           <!-- Select entity modification form -->
+                                                           <form th:action="@{/productstockss/{id}/delete (id=${productstocks.stockid})}" method="post">
+                                                           <div class="row">
+                                                               <div class="log-lg-3 col-md-6 order-0">
+                                                                    <p>Do you want to undo the changes made to this element?</p>
+                                                               </div>
+                                                           </div>
+                                                           <button type="submit" class="btn btn-danger">Delete
+                                                           </button>
+                                                           </form>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

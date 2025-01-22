@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">Create associationquestionevaluation</span></h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form class="form" th:action="@{/associationquestionevaluations}" method="post">
+                <div class="log-lg-3 col-md-6 order-0">
+                    <div class="mb-3">
+  <label for="evaluationsSelect" class="form-label">QuestionsEvaluation</label>
+  <select class="form-select" id="evaluationsSelect" name="evaluations">
+    <option th:each="evaluations:${evaluationss}" th:value="${evaluations.id_evaluation}" th:text="${evaluations.questionsEvaluation}"></option>
+  </select>
+  <div id="evaluationshelp" class="form-text">Select an option.</div>
+</div>
+
+                    <div class="mb-3">
+  <label for="evaluationsSelect" class="form-label">QuestionsEvaluation</label>
+  <select class="form-select" id="evaluationsSelect" name="evaluations">
+    <option th:each="evaluations:${evaluationss}" th:value="${evaluations.id_evaluation}" th:text="${evaluations.questionsEvaluation}"></option>
+  </select>
+  <div id="evaluationshelp" class="form-text">Select an option.</div>
+</div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

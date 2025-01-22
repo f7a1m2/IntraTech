@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">Create reponsespossibles</span></h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form class="form" th:action="@{/reponsespossibless}" method="post">
+                <div class="log-lg-3 col-md-6 order-0">
+                    <div class="mb-3">
+  <label for="estcorrecteSelect" class="form-label">QuestionsEvaluation</label>
+  <select class="form-select" id="estcorrecteSelect" name="estcorrecte">
+    <option th:each="estcorrecte:${estcorrectes}" th:value="${estcorrecte.est_correcte}" th:text="${estcorrecte.questionsEvaluation}"></option>
+  </select>
+  <div id="estcorrectehelp" class="form-text">Select an option.</div>
+</div>
+
+                    <div class="mb-3">
+    <label for="reponseinput" class="form-label">Reponse</label>
+    <input type="text" class="form-control" id="reponseinput"
+      aria-describedby="reponsehelp" name="reponse">
+</div>
+
+                    <div class="mb-3 form-check">
+  <label for="estcorrecteinput" class="form-label">EstCorrecte</label>
+  <input type="checkbox" class="form-check-input" id="estcorrecteinput" 
+    name="estcorrecte">
+  <label class="form-check-label" for="estcorrecteinput">EstCorrecte</label>
+</div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">List of saasproducts</span></h2>
+        </div>
+        <div class="col-6 text-end">
+            <a class="btn btn-primary mb-3" th:href="@{/saasproductss/create-saasproducts}">Create</a>
+        </div>
+    </div>
+
+    <div th:if="${success}" class="alert alert-success alert-dismissible" role="alert" th:text="${success}">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div th:if="${error}" class="alert alert-danger alert-dismissible" role="alert" th:text="${error}">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <!-- TABLE ALSO AT THE TOP OF THE PAGE -->
+    <div class="col-lg-12 col-md-7 order-0">
+        <div class="card shadow border-0">
+            <div class="card-body">
+                <div class="table-responsive text-nowrap">
+                    <table class="table">
+                        <thead class="thead-light">
+                        <tr>
+                            <th>id</th>
+                            <th>productName</th>
+                            <th>description</th>
+                            <th>monthlyPrice</th>
+                            <th>annualPrice</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="saasproducts : ${ saasproductss }">
+                            <td class="text-truncate align-middle mt-3"  th:text="${ saasproducts.id }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ saasproducts.productName }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ saasproducts.description }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ saasproducts.monthlyPrice }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ saasproducts.annualPrice }" >  </td>
+                            
+                            <td class="align-middle">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-2 order-0">
+                                        <div class="mt-0">
+                                            <!-- Button trigger modal -->
+                                            <button
+                                                    type="button"
+                                                    class="btn btn-info"
+                                                    data-bs-toggle="modal"
+                                                    th:attr="data-bs-target='#updateModalCenter_' + ${ saasproducts.id }"
+                                            >
+                                                <i class="bx bx-wallet"></i> Update
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" th:id="'updateModalCenter_' + ${ saasproducts.id }"
+                                                 tabindex="-1"
+                                                 aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered modal-lg"
+                                                     role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h3 class="modal-title" th:id="'updateModalCenterTitle_' + ${ saasproducts.id }">
+                                                                Modify this element</h3>
+                                                            <button
+                                                                    type="button"
+                                                                    class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="close"
+                                                            ></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <!-- Select entity modification form -->
+                                                            <form th:action="@{/saasproductss/{id} (id=${saasproducts.id})}" method="post">
+                                                            <div class="row">
+                                                                <div class="log-lg-3 col-md-6 order-0">
+                                                                    <div class="mb-3">
+  																	<label for="productnameinput" class="form-label">ProductName</label>
+  																	<input type="text" class="form-control" id="productnameinput"
+  																	  name="productname"
+  																	  th:value="${ saasproducts.getProductName() }">
+  																</div>
+
+                                                                    <div class="mb-3">
+  																	<label for="descriptioninput" class="form-label">Description</label>
+  																	<input type="text" class="form-control" id="descriptioninput"
+  																	  name="description"
+  																	  th:value="${ saasproducts.getDescription() }">
+  																</div>
+
+                                                                    <div class="mb-3">
+  																	<label for="monthlypriceinput" class="form-label">MonthlyPrice</label>
+  																	<input type="number" step="0.001" class="form-control" id="monthlypriceinput"
+  																	  name="monthlyprice"
+  																	  th:value="${ saasproducts.getMonthlyPrice() }">
+  																</div>
+
+                                                                    <div class="mb-3">
+  																	<label for="annualpriceinput" class="form-label">AnnualPrice</label>
+  																	<input type="number" step="0.001" class="form-control" id="annualpriceinput"
+  																	  name="annualprice"
+  																	  th:value="${ saasproducts.getAnnualPrice() }">
+  																</div>
+
+                                                                </div>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Confirm
+                                                            </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="align-middle">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-2 order-0">
+                                        <div class="mt-0">
+                                           <!-- Button trigger modal -->
+                                           <button
+                                                   type="button"
+                                                   class="btn btn-danger"
+                                                   data-bs-toggle="modal"
+                                                   th:attr="data-bs-target='#cancelModalCenter_' + ${ saasproducts.id }"
+                                           >
+                                               <i class="bx bx-trash"></i> Delete
+                                           </button>
+
+                                           <!-- Modal -->
+                                           <div class="modal fade" th:id="'cancelModalCenter_' + ${ saasproducts.id }"
+                                                tabindex="-1"
+                                                aria-hidden="true">
+                                               <div class="modal-dialog modal-dialog-centered modal-lg"
+                                                    role="document">
+                                                   <div class="modal-content">
+                                                       <div class="modal-header">
+                                                           <h3 class="modal-title" th:id="'cancelModalCenterTitle_' + ${ saasproducts.id }">
+                                                               Cancellation</h3>
+                                                           <button
+                                                                   type="button"
+                                                                   class="btn-close"
+                                                                   data-bs-dismiss="modal"
+                                                                   aria-label="close"
+                                                           ></button>
+                                                       </div>
+                                                       <div class="modal-body">
+                                                           <!-- Select entity modification form -->
+                                                           <form th:action="@{/saasproductss/{id}/delete (id=${saasproducts.id})}" method="post">
+                                                           <div class="row">
+                                                               <div class="log-lg-3 col-md-6 order-0">
+                                                                    <p>Do you want to undo the changes made to this element?</p>
+                                                               </div>
+                                                           </div>
+                                                           <button type="submit" class="btn btn-danger">Delete
+                                                           </button>
+                                                           </form>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

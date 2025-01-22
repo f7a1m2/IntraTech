@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">Create subscriptions</span></h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form class="form" th:action="@{/subscriptionss}" method="post">
+                <div class="log-lg-3 col-md-6 order-0">
+                    <div class="mb-3">
+  <label for="subscriptionsstatusSelect" class="form-label">Users</label>
+  <select class="form-select" id="subscriptionsstatusSelect" name="subscriptionsstatus">
+    <option th:each="subscriptionsstatus:${subscriptionsstatuss}" th:value="${subscriptionsstatus.subscriptions_status_id}" th:text="${subscriptionsstatus.users}"></option>
+  </select>
+  <div id="subscriptionsstatushelp" class="form-text">Select an option.</div>
+</div>
+
+                    <div class="mb-3">
+  <label for="subscriptionsstatusSelect" class="form-label">Users</label>
+  <select class="form-select" id="subscriptionsstatusSelect" name="subscriptionsstatus">
+    <option th:each="subscriptionsstatus:${subscriptionsstatuss}" th:value="${subscriptionsstatus.subscriptions_status_id}" th:text="${subscriptionsstatus.users}"></option>
+  </select>
+  <div id="subscriptionsstatushelp" class="form-text">Select an option.</div>
+</div>
+
+                    <div class="mb-3">
+  <label for="startdateinput" class="form-label">StartDate</label>
+  <input type="date" class="form-control" id="startdateinput"
+    aria-describedby="startdatehelp" name="startdate">
+</div>
+
+                    <div class="mb-3">
+  <label for="enddateinput" class="form-label">EndDate</label>
+  <input type="date" class="form-control" id="enddateinput"
+    aria-describedby="enddatehelp" name="enddate">
+</div>
+
+                    <div class="mb-3">
+  <label for="subscriptionsstatusSelect" class="form-label">Users</label>
+  <select class="form-select" id="subscriptionsstatusSelect" name="subscriptionsstatus">
+    <option th:each="subscriptionsstatus:${subscriptionsstatuss}" th:value="${subscriptionsstatus.subscriptions_status_id}" th:text="${subscriptionsstatus.users}"></option>
+  </select>
+  <div id="subscriptionsstatushelp" class="form-text">Select an option.</div>
+</div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

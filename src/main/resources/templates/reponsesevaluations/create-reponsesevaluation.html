@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">Create reponsesevaluation</span></h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form class="form" th:action="@{/reponsesevaluations}" method="post">
+                <div class="log-lg-3 col-md-6 order-0">
+                    <div class="mb-3">
+  <label for="commentaireSelect" class="form-label">Evaluations</label>
+  <select class="form-select" id="commentaireSelect" name="commentaire">
+    <option th:each="commentaire:${commentaires}" th:value="${commentaire.commentaire}" th:text="${commentaire.evaluations}"></option>
+  </select>
+  <div id="commentairehelp" class="form-text">Select an option.</div>
+</div>
+
+                    <div class="mb-3">
+  <label for="commentaireSelect" class="form-label">Evaluations</label>
+  <select class="form-select" id="commentaireSelect" name="commentaire">
+    <option th:each="commentaire:${commentaires}" th:value="${commentaire.commentaire}" th:text="${commentaire.evaluations}"></option>
+  </select>
+  <div id="commentairehelp" class="form-text">Select an option.</div>
+</div>
+
+                    <div class="mb-3">
+    <label for="reponsetexteinput" class="form-label">ReponseTexte</label>
+    <input type="text" class="form-control" id="reponsetexteinput"
+      aria-describedby="reponsetextehelp" name="reponsetexte">
+</div>
+
+                    <div class="mb-3">
+  <label for="reponsenoteinput" class="form-label">ReponseNote</label>
+  <input type="number" step="0.001" class="form-control" id="reponsenoteinput"
+    aria-describedby="reponsenotehelp" name="reponsenote">
+</div>
+
+                    <div class="mb-3">
+  <label for="commentaireSelect" class="form-label">Evaluations</label>
+  <select class="form-select" id="commentaireSelect" name="commentaire">
+    <option th:each="commentaire:${commentaires}" th:value="${commentaire.commentaire}" th:text="${commentaire.evaluations}"></option>
+  </select>
+  <div id="commentairehelp" class="form-text">Select an option.</div>
+</div>
+
+                    <div class="mb-3">
+    <label for="commentaireinput" class="form-label">Commentaire</label>
+    <input type="text" class="form-control" id="commentaireinput"
+      aria-describedby="commentairehelp" name="commentaire">
+</div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

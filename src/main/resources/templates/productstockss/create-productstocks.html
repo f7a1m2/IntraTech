@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">Create productstocks</span></h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form class="form" th:action="@{/productstockss}" method="post">
+                <div class="log-lg-3 col-md-6 order-0">
+                    <div class="mb-3">
+  <label for="stockquantitySelect" class="form-label">SaasProducts</label>
+  <select class="form-select" id="stockquantitySelect" name="stockquantity">
+    <option th:each="stockquantity:${stockquantitys}" th:value="${stockquantity.stock_quantity}" th:text="${stockquantity.saasProducts}"></option>
+  </select>
+  <div id="stockquantityhelp" class="form-text">Select an option.</div>
+</div>
+
+                    <div class="mb-3">
+  <label for="anneeinput" class="form-label">Annee</label>
+  <input type="number" step="0.001" class="form-control" id="anneeinput"
+    aria-describedby="anneehelp" name="annee">
+</div>
+
+                    <div class="mb-3">
+  <label for="stockquantityinput" class="form-label">StockQuantity</label>
+  <input type="number" step="0.001" class="form-control" id="stockquantityinput"
+    aria-describedby="stockquantityhelp" name="stockquantity">
+</div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

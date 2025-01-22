@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">List of employes</span></h2>
+        </div>
+        <div class="col-6 text-end">
+            <a class="btn btn-primary mb-3" th:href="@{/employess/create-employes}">Create</a>
+        </div>
+    </div>
+
+    <div th:if="${success}" class="alert alert-success alert-dismissible" role="alert" th:text="${success}">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div th:if="${error}" class="alert alert-danger alert-dismissible" role="alert" th:text="${error}">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <!-- TABLE ALSO AT THE TOP OF THE PAGE -->
+    <div class="col-lg-12 col-md-7 order-0">
+        <div class="card shadow border-0">
+            <div class="card-body">
+                <div class="table-responsive text-nowrap">
+                    <table class="table">
+                        <thead class="thead-light">
+                        <tr>
+                            <th>id</th>
+                            <th>candidats</th>
+                            <th>dateEmbauche</th>
+                            <th>postes</th>
+                            <th>contratType</th>
+                            <th>salaire</th>
+                            <th>users</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="employes : ${ employess }">
+                            <td class="text-truncate align-middle mt-3"  th:text="${ employes.id }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ employes.candidats.id_candidat }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ employes.dateEmbauche }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ employes.postes.id_poste }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ employes.contratType }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ employes.salaire }" >  </td>
+                            <td class="text-truncate align-middle mt-3"  th:text="${ employes.users.user_id }" >  </td>
+                            
+                            <td class="align-middle">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-2 order-0">
+                                        <div class="mt-0">
+                                            <!-- Button trigger modal -->
+                                            <button
+                                                    type="button"
+                                                    class="btn btn-info"
+                                                    data-bs-toggle="modal"
+                                                    th:attr="data-bs-target='#updateModalCenter_' + ${ employes.id }"
+                                            >
+                                                <i class="bx bx-wallet"></i> Update
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" th:id="'updateModalCenter_' + ${ employes.id }"
+                                                 tabindex="-1"
+                                                 aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered modal-lg"
+                                                     role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h3 class="modal-title" th:id="'updateModalCenterTitle_' + ${ employes.id }">
+                                                                Modify this element</h3>
+                                                            <button
+                                                                    type="button"
+                                                                    class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="close"
+                                                            ></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <!-- Select entity modification form -->
+                                                            <form th:action="@{/employess/{id} (id=${employes.id})}" method="post">
+                                                            <div class="row">
+                                                                <div class="log-lg-3 col-md-6 order-0">
+                                                                    <div class="mb-3">
+  																	<label for="usersSelect" class="form-label">Users</label>
+  																	<select class="form-select" id="usersSelect" name="users">
+  																	  <option th:each="users:${userss}" th:value="${users.user_id}" th:text="${users.candidats}"></option>
+  																	</select>
+  																	<div id="usershelp" class="form-text">Select an option.</div>
+  																	</div>
+
+                                                                    <div class="mb-3">
+  																	<label for="dateembaucheinput" class="form-label">DateEmbauche</label>
+  																	<input type="date" class="form-control" id="dateembaucheinput"
+  																	  name="dateembauche"
+  																	  th:value="${ employes.getDateEmbauche() }">
+  																</div>
+
+                                                                    <div class="mb-3">
+  																	<label for="usersSelect" class="form-label">Users</label>
+  																	<select class="form-select" id="usersSelect" name="users">
+  																	  <option th:each="users:${userss}" th:value="${users.user_id}" th:text="${users.candidats}"></option>
+  																	</select>
+  																	<div id="usershelp" class="form-text">Select an option.</div>
+  																	</div>
+
+                                                                    <div class="mb-3">
+  																	<label for="contrattypeinput" class="form-label">ContratType</label>
+  																	<input type="text" class="form-control" id="contrattypeinput"
+  																	  name="contrattype"
+  																	  th:value="${ employes.getContratType() }">
+  																</div>
+
+                                                                    <div class="mb-3">
+  																	<label for="salaireinput" class="form-label">Salaire</label>
+  																	<input type="number" step="0.001" class="form-control" id="salaireinput"
+  																	  name="salaire"
+  																	  th:value="${ employes.getSalaire() }">
+  																</div>
+
+                                                                    <div class="mb-3">
+  																	<label for="usersSelect" class="form-label">Users</label>
+  																	<select class="form-select" id="usersSelect" name="users">
+  																	  <option th:each="users:${userss}" th:value="${users.user_id}" th:text="${users.candidats}"></option>
+  																	</select>
+  																	<div id="usershelp" class="form-text">Select an option.</div>
+  																	</div>
+
+                                                                </div>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Confirm
+                                                            </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="align-middle">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-2 order-0">
+                                        <div class="mt-0">
+                                           <!-- Button trigger modal -->
+                                           <button
+                                                   type="button"
+                                                   class="btn btn-danger"
+                                                   data-bs-toggle="modal"
+                                                   th:attr="data-bs-target='#cancelModalCenter_' + ${ employes.id }"
+                                           >
+                                               <i class="bx bx-trash"></i> Delete
+                                           </button>
+
+                                           <!-- Modal -->
+                                           <div class="modal fade" th:id="'cancelModalCenter_' + ${ employes.id }"
+                                                tabindex="-1"
+                                                aria-hidden="true">
+                                               <div class="modal-dialog modal-dialog-centered modal-lg"
+                                                    role="document">
+                                                   <div class="modal-content">
+                                                       <div class="modal-header">
+                                                           <h3 class="modal-title" th:id="'cancelModalCenterTitle_' + ${ employes.id }">
+                                                               Cancellation</h3>
+                                                           <button
+                                                                   type="button"
+                                                                   class="btn-close"
+                                                                   data-bs-dismiss="modal"
+                                                                   aria-label="close"
+                                                           ></button>
+                                                       </div>
+                                                       <div class="modal-body">
+                                                           <!-- Select entity modification form -->
+                                                           <form th:action="@{/employess/{id}/delete (id=${employes.id})}" method="post">
+                                                           <div class="row">
+                                                               <div class="log-lg-3 col-md-6 order-0">
+                                                                    <p>Do you want to undo the changes made to this element?</p>
+                                                               </div>
+                                                           </div>
+                                                           <button type="submit" class="btn btn-danger">Delete
+                                                           </button>
+                                                           </form>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

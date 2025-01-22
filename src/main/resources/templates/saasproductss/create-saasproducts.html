@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">Create saasproducts</span></h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form class="form" th:action="@{/saasproductss}" method="post">
+                <div class="log-lg-3 col-md-6 order-0">
+                    <div class="mb-3">
+    <label for="productnameinput" class="form-label">ProductName</label>
+    <input type="text" class="form-control" id="productnameinput"
+      aria-describedby="productnamehelp" name="productname">
+</div>
+
+                    <div class="mb-3">
+    <label for="descriptioninput" class="form-label">Description</label>
+    <input type="text" class="form-control" id="descriptioninput"
+      aria-describedby="descriptionhelp" name="description">
+</div>
+
+                    <div class="mb-3">
+  <label for="monthlypriceinput" class="form-label">MonthlyPrice</label>
+  <input type="number" step="0.001" class="form-control" id="monthlypriceinput"
+    aria-describedby="monthlypricehelp" name="monthlyprice">
+</div>
+
+                    <div class="mb-3">
+  <label for="annualpriceinput" class="form-label">AnnualPrice</label>
+  <input type="number" step="0.001" class="form-control" id="annualpriceinput"
+    aria-describedby="annualpricehelp" name="annualprice">
+</div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

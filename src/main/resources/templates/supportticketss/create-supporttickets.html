@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">Create supporttickets</span></h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form class="form" th:action="@{/supportticketss}" method="post">
+                <div class="log-lg-3 col-md-6 order-0">
+                    <div class="mb-3">
+  <label for="createdatSelect" class="form-label">Users</label>
+  <select class="form-select" id="createdatSelect" name="createdat">
+    <option th:each="createdat:${createdats}" th:value="${createdat.created_at}" th:text="${createdat.users}"></option>
+  </select>
+  <div id="createdathelp" class="form-text">Select an option.</div>
+</div>
+
+                    <div class="mb-3">
+    <label for="sujetinput" class="form-label">Sujet</label>
+    <input type="text" class="form-control" id="sujetinput"
+      aria-describedby="sujethelp" name="sujet">
+</div>
+
+                    <div class="mb-3">
+    <label for="descriptioninput" class="form-label">Description</label>
+    <input type="text" class="form-control" id="descriptioninput"
+      aria-describedby="descriptionhelp" name="description">
+</div>
+
+                    <div class="mb-3">
+  <label for="createdatSelect" class="form-label">Users</label>
+  <select class="form-select" id="createdatSelect" name="createdat">
+    <option th:each="createdat:${createdats}" th:value="${createdat.created_at}" th:text="${createdat.users}"></option>
+  </select>
+  <div id="createdathelp" class="form-text">Select an option.</div>
+</div>
+
+                    <div class="mb-3">
+  <label for="createdatinput" class="form-label">CreatedAt</label>
+    <input type="datetime-local" class="form-control" id="createdatinput"
+      aria-describedby="createdathelp" name="createdat">
+</div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</html>

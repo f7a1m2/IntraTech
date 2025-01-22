@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{layout/main_layout}" lang="fr">
+
+<div layout:fragment="content" class="row">
+
+    <!-- Page header -->
+    <div class="row align-items-center justify-content-between">
+        <div class="col-6 text-start">
+            <h2 class="fw-bold py-3 mb-3"><span class="text-muted fw-light">Create invoices</span></h2>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <form class="form" th:action="@{/invoicess}" method="post">
+                <div class="log-lg-3 col-md-6 order-0">
+                    <div class="mb-3">
+  <label for="invoicestatusSelect" class="form-label">Subscriptions</label>
+  <select class="form-select" id="invoicestatusSelect" name="invoicestatus">
+    <option th:each="invoicestatus:${invoicestatuss}" th:value="${invoicestatus.invoice_status_id}" th:text="${invoicestatus.subscriptions}"></option>
+  </select>
+  <div id="invoicestatushelp" class="form-text">Select an option.</div>
+</div>
+
+                    <div class="mb-3">
+  <label for="totalamountinput" class="form-label">TotalAmount</label>
+  <input type="number" step="0.001" class="form-control" id="totalamountinput"
+    aria-describedby="totalamounthelp" name="totalamount">
+</div>
+
+                    <div class="mb-3">
+  <label for="createdatinput" class="form-label">CreatedAt</label>
+    <input type="datetime-local" class="form-control" id="createdatinput"
+      aria-describedby="createdathelp" name="createdat">
+</div>
+
+                    <div class="mb-3">
+  <label for="invoicestatusSelect" class="form-label">Subscriptions</label>
+  <select class="form-select" id="invoicestatusSelect" name="invoicestatus">
+    <option th:each="invoicestatus:${invoicestatuss}" th:value="${invoicestatus.invoice_status_id}" th:text="${invoicestatus.subscriptions}"></option>
+  </select>
+  <div id="invoicestatushelp" class="form-text">Select an option.</div>
+</div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</html>
