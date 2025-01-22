@@ -12,8 +12,8 @@ public class CategoriePostesService  {
 	private final CategoriePostesRepository categoriePostesRepository;
 
 	@Autowired
-	public CategoriePostesService(CategoriePostesRepository categoriePostesRepository) {
-	    this.categoriepostesRepository = categoriePostesRepository;
+	public CategoriePostesService(CategoriePostesRepository categoriePostesRepository, CategoriePostesRepository categoriePostesRepository1) {
+        this.categoriePostesRepository = categoriePostesRepository1;
 	}
 
 	public List<CategoriePostes> getAllCategoriePostes() {
@@ -34,17 +34,17 @@ public class CategoriePostesService  {
 	}
 
 	public CategoriePostes updateCategoriePostes(Long id, CategoriePostes categoriepostes) {
-	    Optional<CategoriePostes> existingCategoriePostes = categoriepostesRepository.findById(id);
+	    Optional<CategoriePostes> existingCategoriePostes = categoriePostesRepository.findById(id);
 	       if (existingCategoriePostes.isPresent()) {
-		       categoriepostes.setCategoriePostesid(id);
-	             return categoriepostesRepository.save(categoriepostes);
+		       categoriepostes.setId(id);
+	             return categoriePostesRepository.save(categoriepostes);
 	       } else {
 	          throw new RuntimeException("CategoriePostes not found with id " + id);
 	       }
 	}
 
 	public void deleteCategoriePostes(Long id) {
-	    categoriepostesRepository.deleteById(id);
+		categoriePostesRepository.deleteById(id);
 	}
 
 }

@@ -36,7 +36,7 @@ public class SubscriptionsService  {
 	public Subscriptions updateSubscriptions(Long id, Subscriptions subscriptions) {
 	    Optional<Subscriptions> existingSubscriptions = subscriptionsRepository.findById(id);
 	       if (existingSubscriptions.isPresent()) {
-		       subscriptions.setSubscriptionsid(id);
+		       subscriptions.setId(id);
 	             return subscriptionsRepository.save(subscriptions);
 	       } else {
 	          throw new RuntimeException("Subscriptions not found with id " + id);

@@ -36,7 +36,7 @@ public class InvoicesService  {
 	public Invoices updateInvoices(Long id, Invoices invoices) {
 	    Optional<Invoices> existingInvoices = invoicesRepository.findById(id);
 	       if (existingInvoices.isPresent()) {
-		       invoices.setInvoicesid(id);
+		       invoices.setId(id);
 	             return invoicesRepository.save(invoices);
 	       } else {
 	          throw new RuntimeException("Invoices not found with id " + id);

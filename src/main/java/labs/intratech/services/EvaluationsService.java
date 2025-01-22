@@ -36,7 +36,7 @@ public class EvaluationsService  {
 	public Evaluations updateEvaluations(Long id, Evaluations evaluations) {
 	    Optional<Evaluations> existingEvaluations = evaluationsRepository.findById(id);
 	       if (existingEvaluations.isPresent()) {
-		       evaluations.setEvaluationsid(id);
+		       evaluations.setId(id);
 	             return evaluationsRepository.save(evaluations);
 	       } else {
 	          throw new RuntimeException("Evaluations not found with id " + id);

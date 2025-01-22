@@ -36,7 +36,7 @@ public class PostesService  {
 	public Postes updatePostes(Long id, Postes postes) {
 	    Optional<Postes> existingPostes = postesRepository.findById(id);
 	       if (existingPostes.isPresent()) {
-		       postes.setPostesid(id);
+		       postes.setId(id);
 	             return postesRepository.save(postes);
 	       } else {
 	          throw new RuntimeException("Postes not found with id " + id);

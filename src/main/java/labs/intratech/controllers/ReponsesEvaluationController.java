@@ -35,8 +35,8 @@ public class ReponsesEvaluationController  {
 	    
 	    model.addAttribute("reponsesevaluations", reponsesevaluations);
 	    model.addAttribute("evaluationss", evaluationss);
-	    model.addAttribute("questionsEvaluations", questionsEvaluations);
-	    model.addAttribute("reponsesPossibless", reponsesPossibless);
+	    model.addAttribute("questionsEvaluations", questionsevaluations);
+	    model.addAttribute("reponsesPossibless", reponsespossibless);
 	    
 	    return "reponsesevaluations/list-reponsesevaluation";
 	}
@@ -48,8 +48,8 @@ public class ReponsesEvaluationController  {
 	    List<ReponsesPossibles> reponsespossibless = reponsespossiblesService.getAllReponsesPossibles();
 	    
 	    model.addAttribute("evaluationss", evaluationss);
-	    model.addAttribute("questionsEvaluations", questionsEvaluations);
-	    model.addAttribute("reponsesPossibless", reponsesPossibless);
+	    model.addAttribute("questionsEvaluations", questionsevaluations);
+	    model.addAttribute("reponsesPossibless", reponsespossibless);
 	    
 	    return "reponsesevaluations/create-reponsesevaluation";
 	}

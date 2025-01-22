@@ -12,8 +12,8 @@ public class AssociationQuestionEvaluationService  {
 	private final AssociationQuestionEvaluationRepository associationQuestionEvaluationRepository;
 
 	@Autowired
-	public AssociationQuestionEvaluationService(AssociationQuestionEvaluationRepository associationQuestionEvaluationRepository) {
-	    this.associationquestionevaluationRepository = associationQuestionEvaluationRepository;
+	public AssociationQuestionEvaluationService(AssociationQuestionEvaluationRepository associationQuestionEvaluationRepository, AssociationQuestionEvaluationRepository associationQuestionEvaluationRepository1) {
+        this.associationQuestionEvaluationRepository = associationQuestionEvaluationRepository1;
 	}
 
 	public List<AssociationQuestionEvaluation> getAllAssociationQuestionEvaluation() {
@@ -34,17 +34,17 @@ public class AssociationQuestionEvaluationService  {
 	}
 
 	public AssociationQuestionEvaluation updateAssociationQuestionEvaluation(Long id, AssociationQuestionEvaluation associationquestionevaluation) {
-	    Optional<AssociationQuestionEvaluation> existingAssociationQuestionEvaluation = associationquestionevaluationRepository.findById(id);
+	    Optional<AssociationQuestionEvaluation> existingAssociationQuestionEvaluation = associationQuestionEvaluationRepository.findById(id);
 	       if (existingAssociationQuestionEvaluation.isPresent()) {
-		       associationquestionevaluation.setAssociationQuestionEvaluationid(id);
-	             return associationquestionevaluationRepository.save(associationquestionevaluation);
+		       associationquestionevaluation.setId(id);
+	             return associationQuestionEvaluationRepository.save(associationquestionevaluation);
 	       } else {
 	          throw new RuntimeException("AssociationQuestionEvaluation not found with id " + id);
 	       }
 	}
 
 	public void deleteAssociationQuestionEvaluation(Long id) {
-	    associationquestionevaluationRepository.deleteById(id);
+		associationQuestionEvaluationRepository.deleteById(id);
 	}
 
 }

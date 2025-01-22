@@ -12,8 +12,8 @@ public class ReponsesPossiblesService  {
 	private final ReponsesPossiblesRepository reponsesPossiblesRepository;
 
 	@Autowired
-	public ReponsesPossiblesService(ReponsesPossiblesRepository reponsesPossiblesRepository) {
-	    this.reponsespossiblesRepository = reponsesPossiblesRepository;
+	public ReponsesPossiblesService(ReponsesPossiblesRepository reponsesPossiblesRepository, ReponsesPossiblesRepository reponsesPossiblesRepository1) {
+        this.reponsesPossiblesRepository = reponsesPossiblesRepository1;
 	}
 
 	public List<ReponsesPossibles> getAllReponsesPossibles() {
@@ -34,17 +34,17 @@ public class ReponsesPossiblesService  {
 	}
 
 	public ReponsesPossibles updateReponsesPossibles(Long id, ReponsesPossibles reponsespossibles) {
-	    Optional<ReponsesPossibles> existingReponsesPossibles = reponsespossiblesRepository.findById(id);
+	    Optional<ReponsesPossibles> existingReponsesPossibles = reponsesPossiblesRepository.findById(id);
 	       if (existingReponsesPossibles.isPresent()) {
-		       reponsespossibles.setReponsesPossiblesid(id);
-	             return reponsespossiblesRepository.save(reponsespossibles);
+		       reponsespossibles.setId(id);
+	             return reponsesPossiblesRepository.save(reponsespossibles);
 	       } else {
 	          throw new RuntimeException("ReponsesPossibles not found with id " + id);
 	       }
 	}
 
 	public void deleteReponsesPossibles(Long id) {
-	    reponsespossiblesRepository.deleteById(id);
+		reponsesPossiblesRepository.deleteById(id);
 	}
 
 }

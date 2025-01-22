@@ -12,8 +12,8 @@ public class SubscriptionsStatusService  {
 	private final SubscriptionsStatusRepository subscriptionsStatusRepository;
 
 	@Autowired
-	public SubscriptionsStatusService(SubscriptionsStatusRepository subscriptionsStatusRepository) {
-	    this.subscriptionsstatusRepository = subscriptionsStatusRepository;
+	public SubscriptionsStatusService(SubscriptionsStatusRepository subscriptionsStatusRepository, SubscriptionsStatusRepository subscriptionsStatusRepository1) {
+        this.subscriptionsStatusRepository = subscriptionsStatusRepository1;
 	}
 
 	public List<SubscriptionsStatus> getAllSubscriptionsStatus() {
@@ -34,17 +34,17 @@ public class SubscriptionsStatusService  {
 	}
 
 	public SubscriptionsStatus updateSubscriptionsStatus(Long id, SubscriptionsStatus subscriptionsstatus) {
-	    Optional<SubscriptionsStatus> existingSubscriptionsStatus = subscriptionsstatusRepository.findById(id);
+	    Optional<SubscriptionsStatus> existingSubscriptionsStatus = subscriptionsStatusRepository.findById(id);
 	       if (existingSubscriptionsStatus.isPresent()) {
-		       subscriptionsstatus.setSubscriptionsStatusid(id);
-	             return subscriptionsstatusRepository.save(subscriptionsstatus);
+		       subscriptionsstatus.setId(id);
+	             return subscriptionsStatusRepository.save(subscriptionsstatus);
 	       } else {
 	          throw new RuntimeException("SubscriptionsStatus not found with id " + id);
 	       }
 	}
 
 	public void deleteSubscriptionsStatus(Long id) {
-	    subscriptionsstatusRepository.deleteById(id);
+		subscriptionsStatusRepository.deleteById(id);
 	}
 
 }

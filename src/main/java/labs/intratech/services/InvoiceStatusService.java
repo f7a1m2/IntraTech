@@ -12,8 +12,8 @@ public class InvoiceStatusService  {
 	private final InvoiceStatusRepository invoiceStatusRepository;
 
 	@Autowired
-	public InvoiceStatusService(InvoiceStatusRepository invoiceStatusRepository) {
-	    this.invoicestatusRepository = invoiceStatusRepository;
+	public InvoiceStatusService(InvoiceStatusRepository invoiceStatusRepository, InvoiceStatusRepository invoiceStatusRepository1) {
+        this.invoiceStatusRepository = invoiceStatusRepository1;
 	}
 
 	public List<InvoiceStatus> getAllInvoiceStatus() {
@@ -34,17 +34,17 @@ public class InvoiceStatusService  {
 	}
 
 	public InvoiceStatus updateInvoiceStatus(Long id, InvoiceStatus invoicestatus) {
-	    Optional<InvoiceStatus> existingInvoiceStatus = invoicestatusRepository.findById(id);
+	    Optional<InvoiceStatus> existingInvoiceStatus = invoiceStatusRepository.findById(id);
 	       if (existingInvoiceStatus.isPresent()) {
-		       invoicestatus.setInvoiceStatusid(id);
-	             return invoicestatusRepository.save(invoicestatus);
+		       invoicestatus.setId(id);
+	             return invoiceStatusRepository.save(invoicestatus);
 	       } else {
 	          throw new RuntimeException("InvoiceStatus not found with id " + id);
 	       }
 	}
 
 	public void deleteInvoiceStatus(Long id) {
-	    invoicestatusRepository.deleteById(id);
+		invoiceStatusRepository.deleteById(id);
 	}
 
 }

@@ -32,7 +32,7 @@ public class SupportTicketsController  {
 	    
 	    model.addAttribute("supportticketss", supportticketss);
 	    model.addAttribute("userss", userss);
-	    model.addAttribute("supportTicketsStatuss", supportTicketsStatuss);
+	    model.addAttribute("supportTicketsStatuss", supportticketsstatuss);
 	    
 	    return "supportticketss/list-supporttickets";
 	}
@@ -43,7 +43,7 @@ public class SupportTicketsController  {
 	    List<SupportTicketsStatus> supportticketsstatuss = supportticketsstatusService.getAllSupportTicketsStatus();
 	    
 	    model.addAttribute("userss", userss);
-	    model.addAttribute("supportTicketsStatuss", supportTicketsStatuss);
+	    model.addAttribute("supportTicketsStatuss", supportticketsstatuss);
 	    
 	    return "supportticketss/create-supporttickets";
 	}

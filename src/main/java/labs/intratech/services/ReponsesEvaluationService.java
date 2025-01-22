@@ -12,8 +12,8 @@ public class ReponsesEvaluationService  {
 	private final ReponsesEvaluationRepository reponsesEvaluationRepository;
 
 	@Autowired
-	public ReponsesEvaluationService(ReponsesEvaluationRepository reponsesEvaluationRepository) {
-	    this.reponsesevaluationRepository = reponsesEvaluationRepository;
+	public ReponsesEvaluationService(ReponsesEvaluationRepository reponsesEvaluationRepository, ReponsesEvaluationRepository reponsesEvaluationRepository1) {
+        this.reponsesEvaluationRepository = reponsesEvaluationRepository1;
 	}
 
 	public List<ReponsesEvaluation> getAllReponsesEvaluation() {
@@ -34,17 +34,17 @@ public class ReponsesEvaluationService  {
 	}
 
 	public ReponsesEvaluation updateReponsesEvaluation(Long id, ReponsesEvaluation reponsesevaluation) {
-	    Optional<ReponsesEvaluation> existingReponsesEvaluation = reponsesevaluationRepository.findById(id);
+	    Optional<ReponsesEvaluation> existingReponsesEvaluation = reponsesEvaluationRepository.findById(id);
 	       if (existingReponsesEvaluation.isPresent()) {
-		       reponsesevaluation.setReponsesEvaluationid(id);
-	             return reponsesevaluationRepository.save(reponsesevaluation);
+		       reponsesevaluation.setId(id);
+	             return reponsesEvaluationRepository.save(reponsesevaluation);
 	       } else {
 	          throw new RuntimeException("ReponsesEvaluation not found with id " + id);
 	       }
 	}
 
 	public void deleteReponsesEvaluation(Long id) {
-	    reponsesevaluationRepository.deleteById(id);
+		reponsesEvaluationRepository.deleteById(id);
 	}
 
 }

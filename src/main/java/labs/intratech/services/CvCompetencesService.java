@@ -12,8 +12,8 @@ public class CvCompetencesService  {
 	private final CvCompetencesRepository cvCompetencesRepository;
 
 	@Autowired
-	public CvCompetencesService(CvCompetencesRepository cvCompetencesRepository) {
-	    this.cvcompetencesRepository = cvCompetencesRepository;
+	public CvCompetencesService(CvCompetencesRepository cvCompetencesRepository, CvCompetencesRepository cvCompetencesRepository1) {
+        this.cvCompetencesRepository = cvCompetencesRepository1;
 	}
 
 	public List<CvCompetences> getAllCvCompetences() {
@@ -34,17 +34,17 @@ public class CvCompetencesService  {
 	}
 
 	public CvCompetences updateCvCompetences(Long id, CvCompetences cvcompetences) {
-	    Optional<CvCompetences> existingCvCompetences = cvcompetencesRepository.findById(id);
+	    Optional<CvCompetences> existingCvCompetences = cvCompetencesRepository.findById(id);
 	       if (existingCvCompetences.isPresent()) {
-		       cvcompetences.setCvCompetencesid(id);
-	             return cvcompetencesRepository.save(cvcompetences);
+		       cvcompetences.setId(id);
+	             return cvCompetencesRepository.save(cvcompetences);
 	       } else {
 	          throw new RuntimeException("CvCompetences not found with id " + id);
 	       }
 	}
 
 	public void deleteCvCompetences(Long id) {
-	    cvcompetencesRepository.deleteById(id);
+		cvCompetencesRepository.deleteById(id);
 	}
 
 }

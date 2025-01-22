@@ -36,7 +36,7 @@ public class OffresService  {
 	public Offres updateOffres(Long id, Offres offres) {
 	    Optional<Offres> existingOffres = offresRepository.findById(id);
 	       if (existingOffres.isPresent()) {
-		       offres.setOffresid(id);
+		       offres.setId(id);
 	             return offresRepository.save(offres);
 	       } else {
 	          throw new RuntimeException("Offres not found with id " + id);

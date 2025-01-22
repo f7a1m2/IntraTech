@@ -12,8 +12,8 @@ public class QuestionsEvaluationService  {
 	private final QuestionsEvaluationRepository questionsEvaluationRepository;
 
 	@Autowired
-	public QuestionsEvaluationService(QuestionsEvaluationRepository questionsEvaluationRepository) {
-	    this.questionsevaluationRepository = questionsEvaluationRepository;
+	public QuestionsEvaluationService(QuestionsEvaluationRepository questionsEvaluationRepository, QuestionsEvaluationRepository questionsEvaluationRepository1) {
+        this.questionsEvaluationRepository = questionsEvaluationRepository1;
 	}
 
 	public List<QuestionsEvaluation> getAllQuestionsEvaluation() {
@@ -34,17 +34,17 @@ public class QuestionsEvaluationService  {
 	}
 
 	public QuestionsEvaluation updateQuestionsEvaluation(Long id, QuestionsEvaluation questionsevaluation) {
-	    Optional<QuestionsEvaluation> existingQuestionsEvaluation = questionsevaluationRepository.findById(id);
+	    Optional<QuestionsEvaluation> existingQuestionsEvaluation = questionsEvaluationRepository.findById(id);
 	       if (existingQuestionsEvaluation.isPresent()) {
-		       questionsevaluation.setQuestionsEvaluationid(id);
-	             return questionsevaluationRepository.save(questionsevaluation);
+		       questionsevaluation.setId(id);
+	             return questionsEvaluationRepository.save(questionsevaluation);
 	       } else {
 	          throw new RuntimeException("QuestionsEvaluation not found with id " + id);
 	       }
 	}
 
 	public void deleteQuestionsEvaluation(Long id) {
-	    questionsevaluationRepository.deleteById(id);
+		questionsEvaluationRepository.deleteById(id);
 	}
 
 }

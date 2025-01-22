@@ -31,7 +31,7 @@ public class AssociationQuestionEvaluationController  {
 	    List<Evaluations> evaluationss = evaluationsService.getAllEvaluations();
 	    
 	    model.addAttribute("associationquestionevaluations", associationquestionevaluations);
-	    model.addAttribute("questionsEvaluations", questionsEvaluations);
+	    model.addAttribute("questionsEvaluations", questionsevaluations);
 	    model.addAttribute("evaluationss", evaluationss);
 	    
 	    return "associationquestionevaluations/list-associationquestionevaluation";
@@ -42,7 +42,7 @@ public class AssociationQuestionEvaluationController  {
 	    List<QuestionsEvaluation> questionsevaluations = questionsevaluationService.getAllQuestionsEvaluation();
 	    List<Evaluations> evaluationss = evaluationsService.getAllEvaluations();
 	    
-	    model.addAttribute("questionsEvaluations", questionsEvaluations);
+	    model.addAttribute("questionsEvaluations", questionsevaluations);
 	    model.addAttribute("evaluationss", evaluationss);
 	    
 	    return "associationquestionevaluations/create-associationquestionevaluation";
