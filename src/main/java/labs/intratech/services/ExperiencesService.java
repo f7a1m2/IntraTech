@@ -36,7 +36,7 @@ public class ExperiencesService  {
 	public Experiences updateExperiences(Long id, Experiences experiences) {
 	    Optional<Experiences> existingExperiences = experiencesRepository.findById(id);
 	       if (existingExperiences.isPresent()) {
-		       experiences.setExperiencesid(id);
+		       experiences.setId(id);
 	             return experiencesRepository.save(experiences);
 	       } else {
 	          throw new RuntimeException("Experiences not found with id " + id);

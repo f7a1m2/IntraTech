@@ -12,8 +12,8 @@ public class HistoriquePerformanceEmployeService  {
 	private final HistoriquePerformanceEmployeRepository historiquePerformanceEmployeRepository;
 
 	@Autowired
-	public HistoriquePerformanceEmployeService(HistoriquePerformanceEmployeRepository historiquePerformanceEmployeRepository) {
-	    this.historiqueperformanceemployeRepository = historiquePerformanceEmployeRepository;
+	public HistoriquePerformanceEmployeService(HistoriquePerformanceEmployeRepository historiquePerformanceEmployeRepository, HistoriquePerformanceEmployeRepository historiquePerformanceEmployeRepository1) {
+        this.historiquePerformanceEmployeRepository = historiquePerformanceEmployeRepository1;
 	}
 
 	public List<HistoriquePerformanceEmploye> getAllHistoriquePerformanceEmploye() {
@@ -34,17 +34,17 @@ public class HistoriquePerformanceEmployeService  {
 	}
 
 	public HistoriquePerformanceEmploye updateHistoriquePerformanceEmploye(Long id, HistoriquePerformanceEmploye historiqueperformanceemploye) {
-	    Optional<HistoriquePerformanceEmploye> existingHistoriquePerformanceEmploye = historiqueperformanceemployeRepository.findById(id);
+	    Optional<HistoriquePerformanceEmploye> existingHistoriquePerformanceEmploye = historiquePerformanceEmployeRepository.findById(id);
 	       if (existingHistoriquePerformanceEmploye.isPresent()) {
-		       historiqueperformanceemploye.setHistoriquePerformanceEmployeid(id);
-	             return historiqueperformanceemployeRepository.save(historiqueperformanceemploye);
+		       historiqueperformanceemploye.setId(id);
+	             return historiquePerformanceEmployeRepository.save(historiqueperformanceemploye);
 	       } else {
 	          throw new RuntimeException("HistoriquePerformanceEmploye not found with id " + id);
 	       }
 	}
 
 	public void deleteHistoriquePerformanceEmploye(Long id) {
-	    historiqueperformanceemployeRepository.deleteById(id);
+		historiquePerformanceEmployeRepository.deleteById(id);
 	}
 
 }

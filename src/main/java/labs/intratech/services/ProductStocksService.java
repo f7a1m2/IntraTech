@@ -12,8 +12,8 @@ public class ProductStocksService  {
 	private final ProductStocksRepository productStocksRepository;
 
 	@Autowired
-	public ProductStocksService(ProductStocksRepository productStocksRepository) {
-	    this.productstocksRepository = productStocksRepository;
+	public ProductStocksService(ProductStocksRepository productStocksRepository, ProductStocksRepository productStocksRepository1) {
+        this.productStocksRepository = productStocksRepository1;
 	}
 
 	public List<ProductStocks> getAllProductStocks() {
@@ -34,17 +34,17 @@ public class ProductStocksService  {
 	}
 
 	public ProductStocks updateProductStocks(Long id, ProductStocks productstocks) {
-	    Optional<ProductStocks> existingProductStocks = productstocksRepository.findById(id);
+	    Optional<ProductStocks> existingProductStocks = productStocksRepository.findById(id);
 	       if (existingProductStocks.isPresent()) {
-		       productstocks.setProductStocksid(id);
-	             return productstocksRepository.save(productstocks);
+		       productstocks.setStockId(id);
+	             return productStocksRepository.save(productstocks);
 	       } else {
 	          throw new RuntimeException("ProductStocks not found with id " + id);
 	       }
 	}
 
 	public void deleteProductStocks(Long id) {
-	    productstocksRepository.deleteById(id);
+		productStocksRepository.deleteById(id);
 	}
 
 }

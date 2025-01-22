@@ -12,8 +12,8 @@ public class FinancialIndicatorsService  {
 	private final FinancialIndicatorsRepository financialIndicatorsRepository;
 
 	@Autowired
-	public FinancialIndicatorsService(FinancialIndicatorsRepository financialIndicatorsRepository) {
-	    this.financialindicatorsRepository = financialIndicatorsRepository;
+	public FinancialIndicatorsService(FinancialIndicatorsRepository financialIndicatorsRepository, FinancialIndicatorsRepository financialIndicatorsRepository1) {
+        this.financialIndicatorsRepository = financialIndicatorsRepository1;
 	}
 
 	public List<FinancialIndicators> getAllFinancialIndicators() {
@@ -34,17 +34,17 @@ public class FinancialIndicatorsService  {
 	}
 
 	public FinancialIndicators updateFinancialIndicators(Long id, FinancialIndicators financialindicators) {
-	    Optional<FinancialIndicators> existingFinancialIndicators = financialindicatorsRepository.findById(id);
+	    Optional<FinancialIndicators> existingFinancialIndicators = financialIndicatorsRepository.findById(id);
 	       if (existingFinancialIndicators.isPresent()) {
-		       financialindicators.setFinancialIndicatorsid(id);
-	             return financialindicatorsRepository.save(financialindicators);
+		       financialindicators.setIndicatorId(id);
+	             return financialIndicatorsRepository.save(financialindicators);
 	       } else {
 	          throw new RuntimeException("FinancialIndicators not found with id " + id);
 	       }
 	}
 
 	public void deleteFinancialIndicators(Long id) {
-	    financialindicatorsRepository.deleteById(id);
+		financialIndicatorsRepository.deleteById(id);
 	}
 
 }

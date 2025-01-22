@@ -28,7 +28,7 @@ public class ReponsesPossiblesController  {
 	    List<QuestionsEvaluation> questionsevaluations = questionsevaluationService.getAllQuestionsEvaluation();
 	    
 	    model.addAttribute("reponsespossibless", reponsespossibless);
-	    model.addAttribute("questionsEvaluations", questionsEvaluations);
+	    model.addAttribute("questionsEvaluations", questionsevaluations);
 	    
 	    return "reponsespossibless/list-reponsespossibles";
 	}
@@ -37,7 +37,7 @@ public class ReponsesPossiblesController  {
 	public String returnReponsesPossibless(Model model) {
 	    List<QuestionsEvaluation> questionsevaluations = questionsevaluationService.getAllQuestionsEvaluation();
 	    
-	    model.addAttribute("questionsEvaluations", questionsEvaluations);
+	    model.addAttribute("questionsEvaluations", questionsevaluations);
 	    
 	    return "reponsespossibless/create-reponsespossibles";
 	}

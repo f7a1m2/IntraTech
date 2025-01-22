@@ -36,7 +36,7 @@ public class EducationService  {
 	public Education updateEducation(Long id, Education education) {
 	    Optional<Education> existingEducation = educationRepository.findById(id);
 	       if (existingEducation.isPresent()) {
-		       education.setEducationid(id);
+		       education.setId(id);
 	             return educationRepository.save(education);
 	       } else {
 	          throw new RuntimeException("Education not found with id " + id);

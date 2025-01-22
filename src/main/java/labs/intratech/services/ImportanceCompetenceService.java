@@ -12,8 +12,8 @@ public class ImportanceCompetenceService  {
 	private final ImportanceCompetenceRepository importanceCompetenceRepository;
 
 	@Autowired
-	public ImportanceCompetenceService(ImportanceCompetenceRepository importanceCompetenceRepository) {
-	    this.importancecompetenceRepository = importanceCompetenceRepository;
+	public ImportanceCompetenceService(ImportanceCompetenceRepository importanceCompetenceRepository, ImportanceCompetenceRepository importanceCompetenceRepository1) {
+        this.importanceCompetenceRepository = importanceCompetenceRepository1;
 	}
 
 	public List<ImportanceCompetence> getAllImportanceCompetence() {
@@ -34,17 +34,17 @@ public class ImportanceCompetenceService  {
 	}
 
 	public ImportanceCompetence updateImportanceCompetence(Long id, ImportanceCompetence importancecompetence) {
-	    Optional<ImportanceCompetence> existingImportanceCompetence = importancecompetenceRepository.findById(id);
+	    Optional<ImportanceCompetence> existingImportanceCompetence = importanceCompetenceRepository.findById(id);
 	       if (existingImportanceCompetence.isPresent()) {
-		       importancecompetence.setImportanceCompetenceid(id);
-	             return importancecompetenceRepository.save(importancecompetence);
+		       importancecompetence.setId(id);
+	             return importanceCompetenceRepository.save(importancecompetence);
 	       } else {
 	          throw new RuntimeException("ImportanceCompetence not found with id " + id);
 	       }
 	}
 
 	public void deleteImportanceCompetence(Long id) {
-	    importancecompetenceRepository.deleteById(id);
+		importanceCompetenceRepository.deleteById(id);
 	}
 
 }

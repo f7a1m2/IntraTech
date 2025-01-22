@@ -36,7 +36,7 @@ public class CandidatsService  {
 	public Candidats updateCandidats(Long id, Candidats candidats) {
 	    Optional<Candidats> existingCandidats = candidatsRepository.findById(id);
 	       if (existingCandidats.isPresent()) {
-		       candidats.setCandidatsid(id);
+		       candidats.setId(id);
 	             return candidatsRepository.save(candidats);
 	       } else {
 	          throw new RuntimeException("Candidats not found with id " + id);

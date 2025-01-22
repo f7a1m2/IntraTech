@@ -36,7 +36,7 @@ public class UsersService  {
 	public Users updateUsers(Long id, Users users) {
 	    Optional<Users> existingUsers = usersRepository.findById(id);
 	       if (existingUsers.isPresent()) {
-		       users.setUsersid(id);
+		       users.setId(id);
 	             return usersRepository.save(users);
 	       } else {
 	          throw new RuntimeException("Users not found with id " + id);

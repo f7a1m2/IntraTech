@@ -36,7 +36,7 @@ public class CompetencesService  {
 	public Competences updateCompetences(Long id, Competences competences) {
 	    Optional<Competences> existingCompetences = competencesRepository.findById(id);
 	       if (existingCompetences.isPresent()) {
-		       competences.setCompetencesid(id);
+		       competences.setId(id);
 	             return competencesRepository.save(competences);
 	       } else {
 	          throw new RuntimeException("Competences not found with id " + id);

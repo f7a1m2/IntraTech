@@ -35,8 +35,8 @@ public class SubscriptionsController  {
 	    
 	    model.addAttribute("subscriptionss", subscriptionss);
 	    model.addAttribute("userss", userss);
-	    model.addAttribute("saasProductss", saasProductss);
-	    model.addAttribute("subscriptionsStatuss", subscriptionsStatuss);
+	    model.addAttribute("saasProductss", saasproductss);
+	    model.addAttribute("subscriptionsStatuss", subscriptionsstatuss);
 	    
 	    return "subscriptionss/list-subscriptions";
 	}
@@ -48,8 +48,8 @@ public class SubscriptionsController  {
 	    List<SubscriptionsStatus> subscriptionsstatuss = subscriptionsstatusService.getAllSubscriptionsStatus();
 	    
 	    model.addAttribute("userss", userss);
-	    model.addAttribute("saasProductss", saasProductss);
-	    model.addAttribute("subscriptionsStatuss", subscriptionsStatuss);
+	    model.addAttribute("saasProductss", saasproductss);
+	    model.addAttribute("subscriptionsStatuss", subscriptionsstatuss);
 	    
 	    return "subscriptionss/create-subscriptions";
 	}

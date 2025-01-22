@@ -36,7 +36,7 @@ public class CvService  {
 	public Cv updateCv(Long id, Cv cv) {
 	    Optional<Cv> existingCv = cvRepository.findById(id);
 	       if (existingCv.isPresent()) {
-		       cv.setCvid(id);
+		       cv.setId(id);
 	             return cvRepository.save(cv);
 	       } else {
 	          throw new RuntimeException("Cv not found with id " + id);

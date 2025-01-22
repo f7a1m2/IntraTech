@@ -28,7 +28,7 @@ public class ProductStocksController  {
 	    List<SaasProducts> saasproductss = saasproductsService.getAllSaasProducts();
 	    
 	    model.addAttribute("productstockss", productstockss);
-	    model.addAttribute("saasProductss", saasProductss);
+	    model.addAttribute("saasProductss", saasproductss);
 	    
 	    return "productstockss/list-productstocks";
 	}
@@ -37,7 +37,7 @@ public class ProductStocksController  {
 	public String returnProductStockss(Model model) {
 	    List<SaasProducts> saasproductss = saasproductsService.getAllSaasProducts();
 	    
-	    model.addAttribute("saasProductss", saasProductss);
+	    model.addAttribute("saasProductss", saasproductss);
 	    
 	    return "productstockss/create-productstocks";
 	}

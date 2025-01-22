@@ -12,8 +12,8 @@ public class SupportTicketsStatusService  {
 	private final SupportTicketsStatusRepository supportTicketsStatusRepository;
 
 	@Autowired
-	public SupportTicketsStatusService(SupportTicketsStatusRepository supportTicketsStatusRepository) {
-	    this.supportticketsstatusRepository = supportTicketsStatusRepository;
+	public SupportTicketsStatusService(SupportTicketsStatusRepository supportTicketsStatusRepository, SupportTicketsStatusRepository supportTicketsStatusRepository1) {
+        this.supportTicketsStatusRepository = supportTicketsStatusRepository1;
 	}
 
 	public List<SupportTicketsStatus> getAllSupportTicketsStatus() {
@@ -34,17 +34,17 @@ public class SupportTicketsStatusService  {
 	}
 
 	public SupportTicketsStatus updateSupportTicketsStatus(Long id, SupportTicketsStatus supportticketsstatus) {
-	    Optional<SupportTicketsStatus> existingSupportTicketsStatus = supportticketsstatusRepository.findById(id);
+	    Optional<SupportTicketsStatus> existingSupportTicketsStatus = supportTicketsStatusRepository.findById(id);
 	       if (existingSupportTicketsStatus.isPresent()) {
-		       supportticketsstatus.setSupportTicketsStatusid(id);
-	             return supportticketsstatusRepository.save(supportticketsstatus);
+		       supportticketsstatus.setId(id);
+	             return supportTicketsStatusRepository.save(supportticketsstatus);
 	       } else {
 	          throw new RuntimeException("SupportTicketsStatus not found with id " + id);
 	       }
 	}
 
 	public void deleteSupportTicketsStatus(Long id) {
-	    supportticketsstatusRepository.deleteById(id);
+		supportTicketsStatusRepository.deleteById(id);
 	}
 
 }

@@ -12,8 +12,8 @@ public class SaasProductsService  {
 	private final SaasProductsRepository saasProductsRepository;
 
 	@Autowired
-	public SaasProductsService(SaasProductsRepository saasProductsRepository) {
-	    this.saasproductsRepository = saasProductsRepository;
+	public SaasProductsService(SaasProductsRepository saasProductsRepository, SaasProductsRepository saasProductsRepository1) {
+        this.saasProductsRepository = saasProductsRepository1;
 	}
 
 	public List<SaasProducts> getAllSaasProducts() {
@@ -34,17 +34,17 @@ public class SaasProductsService  {
 	}
 
 	public SaasProducts updateSaasProducts(Long id, SaasProducts saasproducts) {
-	    Optional<SaasProducts> existingSaasProducts = saasproductsRepository.findById(id);
+	    Optional<SaasProducts> existingSaasProducts = saasProductsRepository.findById(id);
 	       if (existingSaasProducts.isPresent()) {
-		       saasproducts.setSaasProductsid(id);
-	             return saasproductsRepository.save(saasproducts);
+		       saasproducts.setId(id);
+	             return saasProductsRepository.save(saasproducts);
 	       } else {
 	          throw new RuntimeException("SaasProducts not found with id " + id);
 	       }
 	}
 
 	public void deleteSaasProducts(Long id) {
-	    saasproductsRepository.deleteById(id);
+		saasProductsRepository.deleteById(id);
 	}
 
 }

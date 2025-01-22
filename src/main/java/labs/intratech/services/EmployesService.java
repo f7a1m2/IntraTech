@@ -36,7 +36,7 @@ public class EmployesService  {
 	public Employes updateEmployes(Long id, Employes employes) {
 	    Optional<Employes> existingEmployes = employesRepository.findById(id);
 	       if (existingEmployes.isPresent()) {
-		       employes.setEmployesid(id);
+		       employes.setId(id);
 	             return employesRepository.save(employes);
 	       } else {
 	          throw new RuntimeException("Employes not found with id " + id);

@@ -32,7 +32,7 @@ public class InvoicesController  {
 	    
 	    model.addAttribute("invoicess", invoicess);
 	    model.addAttribute("subscriptionss", subscriptionss);
-	    model.addAttribute("invoiceStatuss", invoiceStatuss);
+	    model.addAttribute("invoiceStatuss", invoicestatuss);
 	    
 	    return "invoicess/list-invoices";
 	}
@@ -43,7 +43,7 @@ public class InvoicesController  {
 	    List<InvoiceStatus> invoicestatuss = invoicestatusService.getAllInvoiceStatus();
 	    
 	    model.addAttribute("subscriptionss", subscriptionss);
-	    model.addAttribute("invoiceStatuss", invoiceStatuss);
+	    model.addAttribute("invoiceStatuss", invoicestatuss);
 	    
 	    return "invoicess/create-invoices";
 	}

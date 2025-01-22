@@ -12,8 +12,8 @@ public class ImportanceEducationService  {
 	private final ImportanceEducationRepository importanceEducationRepository;
 
 	@Autowired
-	public ImportanceEducationService(ImportanceEducationRepository importanceEducationRepository) {
-	    this.importanceeducationRepository = importanceEducationRepository;
+	public ImportanceEducationService(ImportanceEducationRepository importanceEducationRepository, ImportanceEducationRepository importanceEducationRepository1) {
+        this.importanceEducationRepository = importanceEducationRepository1;
 	}
 
 	public List<ImportanceEducation> getAllImportanceEducation() {
@@ -34,17 +34,17 @@ public class ImportanceEducationService  {
 	}
 
 	public ImportanceEducation updateImportanceEducation(Long id, ImportanceEducation importanceeducation) {
-	    Optional<ImportanceEducation> existingImportanceEducation = importanceeducationRepository.findById(id);
+	    Optional<ImportanceEducation> existingImportanceEducation = importanceEducationRepository.findById(id);
 	       if (existingImportanceEducation.isPresent()) {
-		       importanceeducation.setImportanceEducationid(id);
-	             return importanceeducationRepository.save(importanceeducation);
+		       importanceeducation.setId(id);
+	             return importanceEducationRepository.save(importanceeducation);
 	       } else {
 	          throw new RuntimeException("ImportanceEducation not found with id " + id);
 	       }
 	}
 
 	public void deleteImportanceEducation(Long id) {
-	    importanceeducationRepository.deleteById(id);
+		importanceEducationRepository.deleteById(id);
 	}
 
 }

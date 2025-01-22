@@ -12,8 +12,8 @@ public class ImportanceExperienceService  {
 	private final ImportanceExperienceRepository importanceExperienceRepository;
 
 	@Autowired
-	public ImportanceExperienceService(ImportanceExperienceRepository importanceExperienceRepository) {
-	    this.importanceexperienceRepository = importanceExperienceRepository;
+	public ImportanceExperienceService(ImportanceExperienceRepository importanceExperienceRepository, ImportanceExperienceRepository importanceExperienceRepository1) {
+        this.importanceExperienceRepository = importanceExperienceRepository1;
 	}
 
 	public List<ImportanceExperience> getAllImportanceExperience() {
@@ -34,17 +34,17 @@ public class ImportanceExperienceService  {
 	}
 
 	public ImportanceExperience updateImportanceExperience(Long id, ImportanceExperience importanceexperience) {
-	    Optional<ImportanceExperience> existingImportanceExperience = importanceexperienceRepository.findById(id);
+	    Optional<ImportanceExperience> existingImportanceExperience = importanceExperienceRepository.findById(id);
 	       if (existingImportanceExperience.isPresent()) {
-		       importanceexperience.setImportanceExperienceid(id);
-	             return importanceexperienceRepository.save(importanceexperience);
+		       importanceexperience.setId(id);
+	             return importanceExperienceRepository.save(importanceexperience);
 	       } else {
 	          throw new RuntimeException("ImportanceExperience not found with id " + id);
 	       }
 	}
 
 	public void deleteImportanceExperience(Long id) {
-	    importanceexperienceRepository.deleteById(id);
+		importanceExperienceRepository.deleteById(id);
 	}
 
 }
