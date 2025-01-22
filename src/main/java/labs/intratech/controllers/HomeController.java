@@ -15,4 +15,9 @@ public class HomeController {
 	public String index() {
 		return "/index";
 	}
+
+	@GetMapping("/error/403")
+	public String error403(){
+		return "error/error-403";
+	}
 }

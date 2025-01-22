@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+   </head>
+<body class="bg-light">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="card-title text-center">Login</h4>
+                </div>
+                <div class="card-body">
+                    <form id="formValidation" class="row g-3" method="post" th:action="@{/userss/loginA}" th:object="${utilisateur}"  data-parsley-validate="">
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" th:field="*{email}"  class="form-control" id="email" data-parsley-trigger="change" required="">
+                        </div>
+                        <div class="col-12">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" th:field="*{pass}"  class="form-control" id="password" required>
+                            <div class="invalid-feedback">Please enter your password!</div>
+                        </div>
+
+                        <div class="col-12">
+                            <input class="btn btn-primary w-100" type="submit" value="Login">
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

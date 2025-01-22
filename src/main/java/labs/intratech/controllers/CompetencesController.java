@@ -2,7 +2,10 @@ package labs.intratech.controllers;
 
 import org.springframework.ui.Model;
 import labs.intratech.models.*;
+import labs.intratech.repositories.UsersRepository;
 import labs.intratech.services.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +16,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/competencess")
 public class CompetencesController  {
 	private final CompetencesService competencesService;
+
+	@Autowired
+	public UsersRepository usersRepository;
 	
 
 	public CompetencesController( CompetencesService competencesService) {
@@ -25,6 +31,7 @@ public class CompetencesController  {
 	    List<Competences> competencess = competencesService.getAllCompetences();
 	    
 	    model.addAttribute("competencess", competencess);
+
 	    
 	    return "competencess/list-competences";
 	}
